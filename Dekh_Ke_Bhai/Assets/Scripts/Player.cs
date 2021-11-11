@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public GameObject go;
     private Rigidbody2D rb;
     public float Upforce;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,11 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, Upforce), ForceMode2D.Impulse);
             rb.velocity = Vector2.up * Upforce;
+            animator.SetBool("Up", true);
+        }
+        else
+        {
+            animator.SetBool("Up", false);
         }
     }
 
