@@ -6,7 +6,8 @@ public class AutoLevel : MonoBehaviour
 {
     public GameObject PipeBody;
 
-    public float respawtime;
+
+    private float respawtime;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +16,18 @@ public class AutoLevel : MonoBehaviour
 
     private void Update()
     {
-        respawtime = Random.Range(6f, 2f);
+
     }
 
-    void SpawnPipe()
+    public void SpawnPipe()
     {
+        respawtime = Random.Range(6f, 2f);
         Vector3 viewpos = transform.position;
         viewpos.x = Mathf.Clamp(viewpos.x, 90, -90);
 
         GameObject a = Instantiate(PipeBody);
         a.transform.position = new Vector2(viewpos.x, Random.Range(26 , -26));
+
     }
 
     IEnumerator SpawningPipe()
@@ -32,7 +35,7 @@ public class AutoLevel : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(respawtime);
-            Debug.Log(respawtime);
+            //Debug.Log(respawtime); // <<-- Can delet...
             SpawnPipe();
         }
     }

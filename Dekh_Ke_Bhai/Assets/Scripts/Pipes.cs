@@ -20,6 +20,7 @@ public class Pipes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 viewpos = transform.position;
         viewpos.x = Mathf.Clamp(viewpos.x, -100, 100);
 
@@ -28,4 +29,6 @@ public class Pipes : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+
 }
