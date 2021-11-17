@@ -16,8 +16,7 @@ public class LevelHandler : MonoBehaviour
 
     void OnbButtonClick()
     {
-        Debug.Log("Clicked button...");
         SceneManager.LoadScene(scean);
     }
-
+    
 }

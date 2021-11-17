@@ -11,7 +11,14 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject autolevel;
     public ScoreScript sc;
-    [SerializeField] GameObject button;
+    //[SerializeField] 
+    [SerializeField] GameObject Playbutton;
+    [SerializeField] GameObject Returnbutton;
+    [SerializeField] Text highscores;
+    [SerializeField] GameObject hs;
+
+
+    public bool Ifbool = false;
 
     //[SerializeField] Pipes pipes; // <<-- this is to access the tower script...
 
@@ -53,13 +60,13 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
         sc.IncressScore(1);
         //go.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         Dead();
         //pipes.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
@@ -67,11 +74,15 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
+        Ifbool = true;
         //rb.bodyType = RigidbodyType2D.Static;
         this.enabled = false;
         autolevel.SetActive(false);
-        button.SetActive(true);
-
+        Playbutton.SetActive(true);
+        hs.SetActive(true);
+        highscores.text = "Score : " + PlayerPrefs.GetInt("highscore");
+        Returnbutton.SetActive(true);
+        //Time.timeScale = 0; // <<-- Can use to pause the game...
     }
 
 
