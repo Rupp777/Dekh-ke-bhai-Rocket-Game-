@@ -98,7 +98,6 @@ public class AutoLevel : MonoBehaviour
             yield return new WaitForSeconds(respawtime2);
             Spwanast1();
         }
-
     }
 
 
